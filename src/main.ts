@@ -17,14 +17,14 @@ interface Event {
   handleEvent(): void;
 }
 
-function incrementCounter(delta : number) {
-    counter += delta;
-    counterDisplay.innerHTML = `${counter} energy`;
+function incrementCounter(delta: number) {
+  counter += delta;
+  counterDisplay.innerHTML = `${counter} energy`;
 }
 
 const buttonClick: Event = {
   handleEvent() {
-    incrementCounter(1)
+    incrementCounter(1);
   },
 };
 
