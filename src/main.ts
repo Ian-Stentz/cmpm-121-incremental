@@ -33,7 +33,16 @@ button.innerHTML = buttonEmoji;
 button.addEventListener("click", buttonClick);
 app.append(button);
 
-setInterval(incrementCounter, 1000, 1);
+let elapsed = 0;
+
+function animationHandler(timeStamp : number) {
+    incrementCounter((timeStamp - elapsed)/1000);
+    elapsed = timeStamp;
+    requestAnimationFrame(animationHandler);
+}
+
+//setInterval(incrementCounter, 1000, 1);
+requestAnimationFrame(animationHandler);
 
 const counterDisplay = document.createElement("div");
 counterDisplay.innerHTML = `${counter} energy`;
