@@ -35,10 +35,10 @@ app.append(button);
 
 let elapsed = 0;
 
-function animationHandler(timeStamp : number) {
-    incrementCounter((timeStamp - elapsed)/1000);
-    elapsed = timeStamp;
-    requestAnimationFrame(animationHandler);
+function animationHandler(timeStamp: number) {
+  incrementCounter((timeStamp - elapsed) / 1000);
+  elapsed = timeStamp;
+  requestAnimationFrame(animationHandler);
 }
 
 //setInterval(incrementCounter, 1000, 1);
