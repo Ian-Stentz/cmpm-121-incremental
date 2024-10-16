@@ -17,7 +17,7 @@ interface Event {
 
 function incrementCounter(delta: number) {
   counter += delta;
-  counterDisplay.innerHTML = `${counter} energy`;
+  counterDisplay.innerHTML = `${counter.toFixed(2)} energy`;
   if (counter >= 10) {
     upgradeButton.disabled = false;
   } else {
@@ -64,5 +64,5 @@ app.append(upgradeButton);
 requestAnimationFrame(animationHandler);
 
 const counterDisplay = document.createElement("div");
-counterDisplay.innerHTML = `${counter} energy`;
+counterDisplay.innerHTML = `${counter.toFixed(2)} energy`;
 app.append(counterDisplay);
