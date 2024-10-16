@@ -9,8 +9,6 @@ const header = document.createElement("h1");
 header.innerHTML = gameName;
 app.append(header);
 
-const buttonEmoji = "⚡";
-
 let counter: number = 0;
 
 interface Event {
@@ -20,6 +18,11 @@ interface Event {
 function incrementCounter(delta: number) {
   counter += delta;
   counterDisplay.innerHTML = `${counter} energy`;
+  if(counter >= 10) {
+    upgradeButton.disabled = false;
+  } else {
+    upgradeButton.disabled = true;
+  }
 }
 
 const buttonClick: Event = {
@@ -28,18 +31,36 @@ const buttonClick: Event = {
   },
 };
 
+const upgradeClick: Event = {
+    handleEvent() {
+        incrementCounter(-10);
+        growthRate += 1;
+    }
+}
+
+let elapsed = 0;
+let growthRate = 0;
+
+function animationHandler(timeStamp: number) {
+  incrementCounter((timeStamp - elapsed) * growthRate / 1000);
+  elapsed = timeStamp;
+  requestAnimationFrame(animationHandler);
+}
+
+
+const buttonEmoji = "⚡";
 const button = document.createElement("button");
 button.innerHTML = buttonEmoji;
 button.addEventListener("click", buttonClick);
 app.append(button);
 
-let elapsed = 0;
+const upgradeEmoji = "🏭";
+const upgradeButton = document.createElement("button");
+upgradeButton.innerHTML = upgradeEmoji;
+upgradeButton.addEventListener("click", upgradeClick);
+upgradeButton.disabled = true;
+app.append(upgradeButton);
 
-function animationHandler(timeStamp: number) {
-  incrementCounter((timeStamp - elapsed) / 1000);
-  elapsed = timeStamp;
-  requestAnimationFrame(animationHandler);
-}
 
 //setInterval(incrementCounter, 1000, 1);
 requestAnimationFrame(animationHandler);
