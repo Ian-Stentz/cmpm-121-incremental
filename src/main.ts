@@ -17,10 +17,14 @@ interface Event {
   handleEvent(): void;
 }
 
+function incrementCounter(delta : number) {
+    counter += delta;
+    counterDisplay.innerHTML = `${counter} energy`;
+}
+
 const buttonClick: Event = {
   handleEvent() {
-    counter += 1;
-    counterDisplay.innerHTML = `${counter} energy`;
+    incrementCounter(1)
   },
 };
 
@@ -28,6 +32,8 @@ const button = document.createElement("button");
 button.innerHTML = buttonEmoji;
 button.addEventListener("click", buttonClick);
 app.append(button);
+
+setInterval(incrementCounter, 1000, 1);
 
 const counterDisplay = document.createElement("div");
 counterDisplay.innerHTML = `${counter} energy`;
