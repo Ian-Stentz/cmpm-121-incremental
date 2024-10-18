@@ -92,7 +92,7 @@ function addUpgradeButton(
   myButton.title = description;
   const myEvent: Event = {
     handleEvent() {
-      incrementCounter(-1 * cost);
+      incrementCounter(-1 * upgradeDict[name].currentCost);
       growthRate += growthIncrease;
       upgradeDict[name].amount += 1;
       upgradeDict[name].currentCost *= 1.15;
