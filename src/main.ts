@@ -109,10 +109,26 @@ function addUpgradeButton(
 // upgradeButton.disabled = true;
 // app.append(upgradeButton);
 
-//skill issue
-addUpgradeButton("Simple Generator", "🧲", 10, 0.1);
-addUpgradeButton("Power Station", "🏭", 100, 2.0);
-addUpgradeButton("Nuclear Plant", "☢️", 1000, 50.0);
+interface Item {
+  name: string,
+  icon: string,
+  cost: number,
+  rate: number
+};
+
+const availableItems : Item[] = [
+  {name: "Simple Generator", icon: "🧲", cost: 10, rate: 0.1},
+  {name: "Power Station", icon: "🏭", cost: 100, rate: 2},
+  {name: "Nuclear Plant", icon: "☢️", cost: 1000, rate: 50},
+];
+
+for(const item of availableItems) {
+  addUpgradeButton(item.name, item.icon, item.cost, item.rate);
+}
+
+// addUpgradeButton("Simple Generator", "🧲", 10, 0.1);
+// addUpgradeButton("Power Station", "🏭", 100, 2.0);
+// addUpgradeButton("Nuclear Plant", "☢️", 1000, 50.0);
 
 //setInterval(incrementCounter, 1000, 1);
 requestAnimationFrame(animationHandler);
@@ -120,7 +136,6 @@ requestAnimationFrame(animationHandler);
 function formatItemTypes() {
   let myString: string = ``;
   for (const key in upgradeDict) {
-    console.log("beep");
     myString = myString.concat(`${key}s : ${upgradeDict[key].amount}<br/>`);
   }
   return myString;
