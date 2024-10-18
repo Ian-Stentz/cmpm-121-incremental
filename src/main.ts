@@ -11,23 +11,23 @@ app.append(header);
 
 let counter: number = 0;
 
-const upgradeDict : {[name: string] : upgradeData} = {};
+const upgradeDict: { [name: string]: upgradeData } = {};
 
 interface Event {
   handleEvent(): void;
 }
 
 function checkUpgradesDisabled() {
-    for(const key in upgradeDict) {
-        const upgrade = upgradeDict[key];
-        if(upgrade.disabled && counter >= upgrade.currentCost) {
-            upgrade.disabled = false;
-            upgrade.button.disabled = false;
-        } else if(!upgrade.disabled && counter < upgrade.currentCost) {
-            upgrade.disabled = true;
-            upgrade.button.disabled = true;
-        }
+  for (const key in upgradeDict) {
+    const upgrade = upgradeDict[key];
+    if (upgrade.disabled && counter >= upgrade.currentCost) {
+      upgrade.disabled = false;
+      upgrade.button.disabled = false;
+    } else if (!upgrade.disabled && counter < upgrade.currentCost) {
+      upgrade.disabled = true;
+      upgrade.button.disabled = true;
     }
+  }
 }
 
 function incrementCounter(delta: number) {
@@ -50,11 +50,11 @@ const buttonClick: Event = {
 // };
 
 interface upgradeData {
-    amount : number;
-    button : HTMLButtonElement;
-    event : Event;
-    disabled : boolean;
-    currentCost : number;
+  amount: number;
+  button: HTMLButtonElement;
+  event: Event;
+  disabled: boolean;
+  currentCost: number;
 }
 
 let elapsed = 0;
@@ -72,26 +72,32 @@ button.innerHTML = buttonEmoji;
 button.addEventListener("click", buttonClick);
 app.append(button);
 
-function addUpgradeButton(name : string, symbol : string, cost : number, growthIncrease : number) {
+function addUpgradeButton(
+  name: string,
+  symbol: string,
+  cost: number,
+  growthIncrease: number,
+) {
   const myButton = document.createElement("button");
   myButton.innerHTML = symbol;
-  const myEvent : Event = {
+  const myEvent: Event = {
     handleEvent() {
-    incrementCounter(-1 * cost);
-    growthRate += growthIncrease;
-    upgradeDict[name].amount += 1;
-    //upgradeDict[name].currentCost *= 1.15;
-    updateGrowthDisplays();
+      incrementCounter(-1 * cost);
+      growthRate += growthIncrease;
+      upgradeDict[name].amount += 1;
+      //upgradeDict[name].currentCost *= 1.15;
+      updateGrowthDisplays();
     },
   };
   myButton.addEventListener("click", myEvent);
   myButton.disabled = true;
-  const thisUpgrade : upgradeData = {
-      amount: 0,
-      button: myButton,
-      event: myEvent,
-      disabled: true,
-      currentCost:cost};
+  const thisUpgrade: upgradeData = {
+    amount: 0,
+    button: myButton,
+    event: myEvent,
+    disabled: true,
+    currentCost: cost,
+  };
   upgradeDict[name] = thisUpgrade;
   app.append(myButton);
 }
@@ -111,12 +117,12 @@ addUpgradeButton("Nuclear Plant", "☢️", 1000, 50.0);
 requestAnimationFrame(animationHandler);
 
 function formatItemTypes() {
-  let myString : string = ``;
-  for(const key in upgradeDict) {
+  let myString: string = ``;
+  for (const key in upgradeDict) {
     console.log("beep");
-    myString = myString.concat(`${key}s : ${upgradeDict[key].amount}<br/>`)
+    myString = myString.concat(`${key}s : ${upgradeDict[key].amount}<br/>`);
   }
-  return myString
+  return myString;
 }
 
 function updateGrowthDisplays() {
