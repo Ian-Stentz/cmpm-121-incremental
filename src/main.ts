@@ -85,7 +85,7 @@ function addUpgradeButton(
       incrementCounter(-1 * cost);
       growthRate += growthIncrease;
       upgradeDict[name].amount += 1;
-      //upgradeDict[name].currentCost *= 1.15;
+      upgradeDict[name].currentCost *= 1.15;
       updateGrowthDisplays();
     },
   };
