@@ -109,6 +109,7 @@ function addUpgradeButton(
 // upgradeButton.disabled = true;
 // app.append(upgradeButton);
 
+//skill issue
 addUpgradeButton("Simple Generator", "🧲", 10, 0.1);
 addUpgradeButton("Power Station", "🏭", 100, 2.0);
 addUpgradeButton("Nuclear Plant", "☢️", 1000, 50.0);
