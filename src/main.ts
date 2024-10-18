@@ -80,6 +80,7 @@ function addUpgradeButton(
 ) {
   const myButton = document.createElement("button");
   myButton.innerHTML = symbol;
+  myButton.title = "With you in the dark";
   const myEvent: Event = {
     handleEvent() {
       incrementCounter(-1 * cost);
@@ -110,19 +111,19 @@ function addUpgradeButton(
 // app.append(upgradeButton);
 
 interface Item {
-  name: string,
-  icon: string,
-  cost: number,
-  rate: number
-};
+  name: string;
+  icon: string;
+  cost: number;
+  rate: number;
+}
 
-const availableItems : Item[] = [
-  {name: "Simple Generator", icon: "🧲", cost: 10, rate: 0.1},
-  {name: "Power Station", icon: "🏭", cost: 100, rate: 2},
-  {name: "Nuclear Plant", icon: "☢️", cost: 1000, rate: 50},
+const availableItems: Item[] = [
+  { name: "Simple Generator", icon: "🧲", cost: 10, rate: 0.1 },
+  { name: "Power Station", icon: "🏭", cost: 100, rate: 2 },
+  { name: "Nuclear Plant", icon: "☢️", cost: 1000, rate: 50 },
 ];
 
-for(const item of availableItems) {
+for (const item of availableItems) {
   addUpgradeButton(item.name, item.icon, item.cost, item.rate);
 }
 
