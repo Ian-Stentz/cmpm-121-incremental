@@ -32,7 +32,7 @@ function checkUpgradesDisabled() {
 
 function incrementCounter(delta: number) {
   counter += delta;
-  counterDisplay.innerHTML = `${counter.toFixed(2)} energy`;
+  counterDisplay.innerHTML = `${counter.toFixed(2)} watts`;
   checkUpgradesDisabled();
 }
 
@@ -73,7 +73,7 @@ button.addEventListener("click", buttonClick);
 app.append(button);
 
 const counterDisplay = document.createElement("div");
-counterDisplay.innerHTML = `${counter.toFixed(2)} energy`;
+counterDisplay.innerHTML = `${counter.toFixed(2)} watts`;
 app.append(counterDisplay);
 
 const divider = document.createElement("hr");
@@ -218,12 +218,12 @@ function formatItemTypes() {
 }
 
 function updateGrowthDisplays() {
-  growthRateDisplay.innerHTML = `${growthRate.toFixed(2)} energy/sec`;
+  growthRateDisplay.innerHTML = `${growthRate.toFixed(2)} watts/sec`;
   itemTypes.innerHTML = formatItemTypes();
 }
 
 const growthRateDisplay = document.createElement("div");
-growthRateDisplay.innerHTML = `${growthRate.toFixed(2)} energy/sec`;
+growthRateDisplay.innerHTML = `${growthRate.toFixed(2)} watts/sec`;
 const itemTypes = document.createElement("div");
 itemTypes.innerHTML = formatItemTypes();
 app.append(growthRateDisplay);
