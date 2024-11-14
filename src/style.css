@@ -4,8 +4,8 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(255, 192, 75, 0.87);
+  background-color: #ffd900;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,11 +29,13 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: #ebd03bb4;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  animation: jolt 0.6s infinite ease-in-out;
 }
 
 #app {
@@ -45,7 +47,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid black;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -55,11 +57,64 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #00033b;
+  background-color: #fffec7;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+button.zap {
+  border-radius: 8px;
+  border: 2px solid black;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  animation: invjolt 0.2s infinite ease-in-out;
+}
+button.zap:hover {
+  border-color: #00033b;
+  background-color: #fffec7;
+}
+button.zap:focus,
+button.zap:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+desc {
+  padding: 0.2em 0.4em;
+  font-size: 1em;
+  background-color: #fffb00;
+  font-weight: 500;
+}
+
+title {
+  border : 5px solid purple;
+}
+
+hr.redsolid {
+  border: 4px dashed rgb(85, 13, 13);
+}
+
+div.counter {
+  animation: jolt 0.2s infinite ease-in-out;
+}
+
+div.stats {
+  font-weight: bold;
+}
+
+@keyframes jolt{
+  0%, 100% {transform: translate(-1px, 0px);}
+  50% {transform: translate(1px, 0px);}
+}
+@keyframes invjolt{
+  0%, 100% {transform: translate(1px, 0px);}
+  50% {transform: translate(-1px, 0px);}
 }
 
 @media (prefers-color-scheme: light) {

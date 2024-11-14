@@ -69,15 +69,17 @@ function animationHandler(timeStamp: number) {
 const buttonEmoji = "⚡";
 const button = document.createElement("button");
 button.innerHTML = buttonEmoji;
+button.className = "zap"
 button.addEventListener("click", buttonClick);
 app.append(button);
 
 const counterDisplay = document.createElement("div");
 counterDisplay.innerHTML = `${counter.toFixed(2)} watts`;
+counterDisplay.className = "counter";
 app.append(counterDisplay);
 
 const divider = document.createElement("hr");
-divider.className = "dotted";
+divider.className = "redsolid";
 app.append(divider);
 
 function addUpgradeButton(
@@ -130,7 +132,7 @@ interface Item {
 const availableItems: Item[] = [
   {
     name: "Boulder Pusher",
-    icon: "🪨",
+    icon: "🧱",
     cost: 10,
     rate: 0.1,
     description: `Hire someone to push a boulder up a hill to let it roll back down, generating a miniscule amount of energy. 'One must imagine Sisyphus happy.'`,
@@ -224,7 +226,9 @@ function updateGrowthDisplays() {
 
 const growthRateDisplay = document.createElement("div");
 growthRateDisplay.innerHTML = `${growthRate.toFixed(2)} watts/sec`;
+growthRateDisplay.className = "stats";
 const itemTypes = document.createElement("div");
 itemTypes.innerHTML = formatItemTypes();
+itemTypes.className = "stats";
 app.append(growthRateDisplay);
 app.append(itemTypes);
